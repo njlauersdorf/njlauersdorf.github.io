@@ -1557,7 +1557,7 @@ img {
 @media screen and (min-width: 0px) {
 
   .home__img {
-    width: 200px;
+    width: 100px;
     bottom: 10%;
   }
 }
