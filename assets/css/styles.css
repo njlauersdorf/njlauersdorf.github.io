@@ -1475,7 +1475,7 @@ img {
   }
 
   .home__img {
-    width: 250px;
+    width: 2500px;
     bottom: 10%;
   }
   .aboutright__txt {
@@ -1552,6 +1552,22 @@ img {
   .pubright__container { display: flex; flex-flow: column; }
   .pubright__txt { order: 1; }
   .pubright__img { order: 2;  }
+}
+
+@media screen and (min-width: 0px) {
+
+  .home__img {
+    width: 200px;
+    bottom: 10%;
+  }
+}
+
+@media screen and (min-width: 500px) {
+
+  .home__img {
+    width: 250px;
+    bottom: 10%;
+  }
 }
 
 @media screen and (min-width: 650px) {
