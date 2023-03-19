@@ -45,7 +45,7 @@
     --big-font-size: 3.5rem;
     --h2-font-size: 3rem;
     --h1-font-size: 2rem;
-    --larger2-font-size: 2.0rem;
+    --larger2-font-size: 1.0rem;
     --larger-font-size: 1.0rem;
     --normal-font-size: 1.0rem;
     --smaller-font-size: .9rem;
@@ -199,12 +199,24 @@ div.container {
   
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (min-width: 0px) {
 
-  div.medium {
+  div.small {
+  width:250px; 
+  margin-left: auto;
+  margin-right: auto;
+
+  }
   
-  display: none;
-  
+}
+
+@media screen and (min-width: 500px) {
+
+  div.small {
+  width:350px; 
+  margin-left: auto;
+  margin-right: auto;
+
   }
   
 }
@@ -219,17 +231,6 @@ div.container {
   
 }
 
-@media screen and (max-width: 890px) {
-
-  div.small {
-  
-  width: 280px;
-  margin-left: auto;
-  margin-right: auto;
-
-  }
-  
-}
 .range{
   text-align: center;
   margin-top: 0rem;
@@ -793,7 +794,7 @@ img {
 
 .awards_button {
   background: url(../img/awards_button.png);
-  background-size: 50%;
+  background-size: 91%;
   color: #FFFFFF;
   font-weight: var(--font-semi);
   font-size: 1.5rem;
@@ -1352,7 +1353,7 @@ img {
 
 @media screen and (min-width: 0px) {
   .home__banner {
-    margin-top: -15px;
+    margin-top: -10px;
   }
   .section-title {
     margin-top: -2rem;
@@ -1374,7 +1375,11 @@ img {
     margin-top: 4rem;
   }
 }
-
+@media screen and (min-width: 500px) {
+  .home__banner {
+    margin-top: -15px;
+  }
+}
 @media screen and (min-width: 690px) {
   .home__banner {
     margin-top: -20px;
@@ -1474,10 +1479,6 @@ img {
     font-size: 2.75rem;
   }
 
-  .home__img {
-    width: 2500px;
-    bottom: 10%;
-  }
   .aboutright__txt {
     margin-left:0.0rem; 
     font-size: var(--normal-font-size);
@@ -1557,8 +1558,8 @@ img {
 @media screen and (min-width: 0px) {
 
   .home__img {
-    width: 100px;
-    bottom: 10%;
+    width: 200px;
+    bottom: 20%;
   }
 }
 
@@ -1968,14 +1969,14 @@ img {
   }
 
 }
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 500px) {
 
   .active_matter_button {
     background: url(../img/seal_hunting_fish.gif);
     background-size: 100%;
     color: #FFFFFF;
     font-weight: var(--font-semi);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     transition: 1s;
     box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
     border-radius: .5rem;
@@ -1996,7 +1997,7 @@ img {
     background-position: center;
     color: #FFFFFF;
     font-weight: var(--font-semi);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     transition: 1s;
     box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
     border-radius: .5rem;
@@ -2014,7 +2015,7 @@ img {
     background-size: 100%;
     color: #FFFFFF;
     font-weight: var(--font-semi);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     transition: 1s;
     box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
     border-radius: .5rem;
@@ -2029,10 +2030,10 @@ img {
 
   .awards_button {
     background: url(../img/awards_button.png);
-    background-size: 100%;
+    background-size: 91%;
     color: #FFFFFF;
     font-weight: var(--font-semi);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     transition: 1s;
     box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
     border-radius: .5rem;
@@ -2051,7 +2052,7 @@ img {
     background-size: 100%;
     color: #FFFFFF;
     font-weight: var(--font-semi);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     transition: 1s;
     box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
     border-radius: .5rem;
@@ -2069,7 +2070,7 @@ img {
     background-size: 100%;
     color: #FFFFFF;
     font-weight: var(--font-semi);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     transition: 1s;
     box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
     border-radius: .5rem;
