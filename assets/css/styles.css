@@ -42,13 +42,13 @@
 @media screen and (min-width: 0px) {
   :root {
     --vbig-font-size: 1.0rem;
-    --big-font-size: 3.5rem;
-    --h2-font-size: 3rem;
-    --h1-font-size: 2rem;
+    --big-font-size: 3.0rem;
+    --h2-font-size: 2.5rem;
+    --h1-font-size: 1.5rem;
     --larger2-font-size: 1.0rem;
     --larger-font-size: 1.0rem;
     --normal-font-size: 1.0rem;
-    --smaller-font-size: .9rem;
+    --smaller-font-size: 0.9rem;
   }
 }
 
@@ -974,6 +974,7 @@ img {
 .about__subtitle {
   margin-bottom: var(--mb-2);
   color: rgb(0, 0, 0);
+  text-align: center
 }
 
 .publeft__subtitle {
