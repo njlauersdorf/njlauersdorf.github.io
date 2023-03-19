@@ -1448,6 +1448,8 @@ img {
 }
 
 
+
+
 @media screen and (max-width: 850px) {
   .home {
     padding: 4rem 0 2rem;
@@ -1543,6 +1545,19 @@ img {
   }
 }
 
+@media screen and (max-width: 450px) {
+
+  .header_button {
+    font-size: 0.8rem;
+    padding: .75rem 1.5rem;
+  }
+
+  .home__social-icon {
+    margin-bottom: 0;
+    margin-right: var(--mb-4);
+    font-size: 2.35rem;
+  }
+}
 @media screen and (max-width: 890px) {
   .about__container { display: flex; flex-flow: column; }
   .aboutleft__txt { order: 1; }
@@ -1556,6 +1571,14 @@ img {
 }
 
 @media screen and (min-width: 0px) {
+
+  .home__img {
+    width: 200px;
+    bottom: 20%;
+  }
+}
+
+@media screen and (min-width: 450px) {
 
   .home__img {
     width: 200px;
