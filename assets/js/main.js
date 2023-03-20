@@ -30,6 +30,8 @@ $(function(){
     $('.nav__list li a').each(function(){
         var $this = $(this);
         var new_path = a + '/' + $this.attr('href')
+        console.log(new_path)
+        console.log(current)
         // if the current path is like this link, make it active
         if(new_path.indexOf(current) !== -1){
             $this.addClass('active');
