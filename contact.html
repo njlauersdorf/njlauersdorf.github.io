@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -13,6 +14,45 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
 
         <script type="module" src="lib/path.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+
+        <script>
+            const constraints = {
+                name: {
+                    presence: { allowEmpty: false }
+                },
+                email: {
+                    presence: { allowEmpty: false },
+                    email: true
+                },
+                message: {
+                    presence: { allowEmpty: false }
+                }
+            };
+         
+            const form = document.getElementById('contact-form');
+         
+            form.addEventListener('submit', function (event) {
+              const formValues = {
+                  name: form.elements.name.value,
+                  email: form.elements.email.value,
+                  message: form.elements.message.value
+              };
+         
+              const errors = validate(formValues, constraints);
+         
+              if (errors) {
+                event.preventDefault();
+                const errorMessage = Object
+                    .values(errors)
+                    .map(function (fieldValues) { return fieldValues.join(', ')})
+                    .join("\n");
+         
+                alert(errorMessage);
+              }
+            }, false);
+        </script>
+
 
         
         <title>Nicholas Lauersdorf PhD</title>
@@ -50,14 +90,13 @@
                     </video>
                 </div>
                 <h2 class="section-title">Contact</h2>
-                <?php echo((!empty($errorMessage)) ? $errorMessage : '') ?>
+                
                 <div class="contact__container bd-grid">
-                    <form action="action_email.php" class="contact__form">
+                    <form method="POST" action="action_email.php" id="contact-form" class="contact__form">
                         <input type="text" name="name" placeholder="Name" class="contact__input">
-                        <input type="mail" name="email" placeholder="Email" class="contact__input">
-                        <input type="text" name="subject" placeholder="Subject" class="contact__input">
-                        <textarea name="message" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Send" class="contact__button button">
+                        <input type="mail" name="email" placeholder="Email Address" class="contact__input">
+                        <textarea name="message" id="" placeholder="Message" cols="0" rows="10" class="contact__input"></textarea>
+                        <input type="submit" value="Send" class="contact__button button">
                     </form>
                 </div>
             </section>
@@ -78,6 +117,43 @@
 
         <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
+
+        <script>
+            const constraints = {
+                name: {
+                    presence: { allowEmpty: false }
+                },
+                email: {
+                    presence: { allowEmpty: false },
+                    email: true
+                },
+                message: {
+                    presence: { allowEmpty: false }
+                }
+            };
+         
+            const form = document.getElementById('contact-form');
+         
+            form.addEventListener('submit', function (event) {
+              const formValues = {
+                  name: form.elements.name.value,
+                  email: form.elements.email.value,
+                  message: form.elements.message.value
+              };
+         
+              const errors = validate(formValues, constraints);
+         
+              if (errors) {
+                event.preventDefault();
+                const errorMessage = Object
+                    .values(errors)
+                    .map(function (fieldValues) { return fieldValues.join(', ')})
+                    .join("\n");
+         
+                alert(errorMessage);
+              }
+            }, false);
+        </script>
 
     </body>
 </html>

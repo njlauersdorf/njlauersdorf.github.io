@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -13,61 +12,47 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
 
         <script type="module" src="lib/path.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+
+        <script>
+            const constraints = {
+                name: {
+                    presence: { allowEmpty: false }
+                },
+                email: {
+                    presence: { allowEmpty: false },
+                    email: true
+                },
+                message: {
+                    presence: { allowEmpty: false }
+                }
+            };
+         
+            const form = document.getElementById('contact-form');
+         
+            form.addEventListener('submit', function (event) {
+              const formValues = {
+                  name: form.elements.name.value,
+                  email: form.elements.email.value,
+                  message: form.elements.message.value
+              };
+         
+              const errors = validate(formValues, constraints);
+         
+              if (errors) {
+                event.preventDefault();
+                const errorMessage = Object
+                    .values(errors)
+                    .map(function (fieldValues) { return fieldValues.join(', ')})
+                    .join("\n");
+         
+                alert(errorMessage);
+              }
+            }, false);
+        </script>
+
 
         
-
-        <?php
-
-        function strip_crlf($string)
-        {
-            return str_replace("\r\n", "", $string);
-        }
-
-        if (! empty($_POST["send"])) {
-            $name = $_POST["userName"];
-            $email = $_POST["userEmail"];
-            $subject = $_POST["subject"];
-            $content = $_POST["content"];
-
-            $toEmail = "admin@phppot_samples.com";
-            // CRLF Injection attack protection
-            $name = strip_crlf($name);
-            $email = strip_crlf($email);
-            if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                echo "The email address is invalid.";
-            } else {
-                // appending \r\n at the end of mailheaders for end
-                $mailHeaders = "From: " . $name . "<" . $email . ">\r\n";
-                if (mail($toEmail, $subject, $content, $mailHeaders)) {
-                    $message = "Your contact information is received successfully.";
-                    $type = "success";
-                }
-            }
-        }
-        require_once "contact-view.php";
-        ?>
-
-        <?php
-            if (! empty($_POST["send"])) {
-                $name = $_POST["userName"];
-                $email = $_POST["userEmail"];
-                $subject = $_POST["subject"];
-                $content = $_POST["content"];
-                $conn = mysqli_connect("localhost", "root", "test", "contactform_database") or die("Connection Error: " . mysqli_error($conn));
-                $stmt = $conn->prepare("INSERT INTO tblcontact (user_name, user_email, subject,content) VALUES (?, ?, ?, ?)");
-                $stmt->bind_param("ssss", $name, $email, $subject, $content);
-                $stmt->execute();
-                $message = "Your contact information is saved successfully.";
-                $type = "success";
-                $stmt->close();
-                $conn->close();
-            }
-            require_once "contact-view.php";
-        ?>
-
-
-
-
         <title>Nicholas Lauersdorf PhD</title>
     </head>
     <body>
@@ -103,14 +88,13 @@
                     </video>
                 </div>
                 <h2 class="section-title">Contact</h2>
-                <?php echo((!empty($errorMessage)) ? $errorMessage : '') ?>
+                
                 <div class="contact__container bd-grid">
-                    <form action="action_email.php" class="contact__form">
+                    <form method="POST" action="action_email.php" id="contact-form" class="contact__form">
                         <input type="text" name="name" placeholder="Name" class="contact__input">
-                        <input type="mail" name="email" placeholder="Email" class="contact__input">
-                        <input type="text" name="subject" placeholder="Subject" class="contact__input">
-                        <textarea name="message" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Send" class="contact__button button">
+                        <input type="mail" name="email" placeholder="Email Address" class="contact__input">
+                        <textarea name="message" id="" placeholder="Message" cols="0" rows="10" class="contact__input"></textarea>
+                        <input type="submit" value="Send" class="contact__button button">
                     </form>
                 </div>
             </section>
@@ -132,5 +116,87 @@
         <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
 
+        <script>
+            const constraints = {
+                name: {
+                    presence: { allowEmpty: false }
+                },
+                email: {
+                    presence: { allowEmpty: false },
+                    email: true
+                },
+                message: {
+                    presence: { allowEmpty: false }
+                }
+            };
+         
+            const form = document.getElementById('contact-form');
+         
+            form.addEventListener('submit', function (event) {
+              const formValues = {
+                  name: form.elements.name.value,
+                  email: form.elements.email.value,
+                  message: form.elements.message.value
+              };
+         
+              const errors = validate(formValues, constraints);
+         
+              if (errors) {
+                event.preventDefault();
+                const errorMessage = Object
+                    .values(errors)
+                    .map(function (fieldValues) { return fieldValues.join(', ')})
+                    .join("\n");
+         
+                alert(errorMessage);
+              }
+            }, false);
+        </script>
+        <?php
+
+            $errors = [];
+            $errorMessage = '';
+
+            if (!empty($_POST)) {
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $message = $_POST['message'];
+
+                if (empty($name)) {
+                    $errors[] = 'Name is empty';
+                }
+
+                if (empty($email)) {
+                    $errors[] = 'Email is empty';
+                } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $errors[] = 'Email is invalid';
+                }
+
+                if (empty($message)) {
+                    $errors[] = 'Message is empty';
+                }
+
+                if (empty($errors)) {
+                    $toEmail = 'example@example.com';
+                    $emailSubject = 'New email from your contact form';
+                    $headers = ['From' => $email, 'Reply-To' => $email, 'Content-type' => 'text/html; charset=utf-8'];
+                    $bodyParagraphs = ["Name: {$name}", "Email: {$email}", "Message:", $message];
+                    $body = join(PHP_EOL, $bodyParagraphs);
+
+                    if (mail($toEmail, $emailSubject, $body, $headers)) {
+
+                        header('Location: thank-you.html');
+                    } else {
+                        $errorMessage = 'Oops, something went wrong. Please try again later';
+                    }
+
+                } else {
+
+                    $allErrors = join('<br/>', $errors);
+                    $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
+                }
+            }
+
+        ?>
     </body>
 </html>
