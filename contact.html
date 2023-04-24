@@ -91,12 +91,18 @@
                 </div>
                 <h2 class="section-title">Contact</h2>
                 
+                <p style="text-align: center;" class="orcid__text">Email Address: njlauersdorf@gmail.com</p>
+
                 <div class="contact__container bd-grid">
-                    <form method="POST" action="http://formspree.io/njlauersdorf@gmail.com" id="contact-form" class="contact__form">
-                        <input type="mail" name="_replyto" placeholder="Email Address" class="contact__input">
-                        <textarea name="body" id="" placeholder="Message" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="submit" value="Send" class="contact__button button">
-                    </form>
+                    <form name="gform" id="gform" enctype="text/plain"  action="https://docs.google.com/forms/d/e/1FAIpQLSdtBq1wwECD-wlwZtOE-fjTHx5zfopzu9QiebHwYswQjUYIIw/formResponse?" target="hidden_iframe" onsubmit="submitted=true;" class="contact__form">
+                        <input type="text" name="entry.2098012257" id="entry.2098012257" placeholder="Name" class="contact__input">
+                        <input type="mail" name="entry.1485540167" id="entry.1485540167" placeholder="Email Address" class="contact__input">
+                        <textarea name="entry.578671511" name="entry.578671511" placeholder="Message" cols="0" rows="10" class="contact__input"></textarea>
+                        <input type="submit" value="Send" name="gform_submit" id="gform_submit" class="contact__button button">
+                    </form> 
+
+                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
+
                 </div>
             </section>
         </main>
@@ -117,41 +123,14 @@
         <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
 
-        <script>
-            const constraints = {
-                name: {
-                    presence: { allowEmpty: false }
-                },
-                email: {
-                    presence: { allowEmpty: false },
-                    email: true
-                },
-                message: {
-                    presence: { allowEmpty: false }
-                }
-            };
-         
-            const form = document.getElementById('contact-form');
-         
-            form.addEventListener('submit', function (event) {
-              const formValues = {
-                  name: form.elements.name.value,
-                  email: form.elements.email.value,
-                  message: form.elements.message.value
-              };
-         
-              const errors = validate(formValues, constraints);
-         
-              if (errors) {
-                event.preventDefault();
-                const errorMessage = Object
-                    .values(errors)
-                    .map(function (fieldValues) { return fieldValues.join(', ')})
-                    .join("\n");
-         
-                alert(errorMessage);
-              }
-            }, false);
+        <script src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript">var submitted=false;</script>
+        <script type="text/javascript">
+        $('#gform').on('submit', function(e) {
+        $('#gform #gform_submit').fadeOut(0);
+        $('#gform *').fadeOut(0);
+        $('#gform').prepend('Your message has been sent!');
+        });
         </script>
 
     </body>
