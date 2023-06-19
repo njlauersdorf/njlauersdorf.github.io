@@ -514,7 +514,7 @@ img {
     top: var(--header-height);
     right: -100%;
     width: 180px;
-    height: 28%;
+    height: 32%;
     padding: 0rem;
     background-color: hsl(0,0%,76.1%);
     transition: .5s;
