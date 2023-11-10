@@ -432,10 +432,8 @@ img {
 
 .section-title-sec {
   position: relative;
-  font-size: var(--h1-font-size);
+  font-size: var(--h2-font-size);
   color: var(--second-color);
-  margin: auto;
-  max-width: 100%;
   text-align: center;
 }
 
