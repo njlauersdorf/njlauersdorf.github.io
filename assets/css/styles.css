@@ -1186,16 +1186,16 @@ img {
   z-index: var(--z-back);
 }
 
-.skills__adv {
+.skills__ten {
   width: 100%;
 }
 
-.skills__int {
-  width: 66.666666%;
+.skills__four {
+  width: 40%;
 }
 
-.skills__beg {
-  width: 33.333333%;
+.skills__two {
+  width: 20%;
 }
 
 .skills__one {
