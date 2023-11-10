@@ -434,6 +434,7 @@ img {
   position: relative;
   font-size: var(--h1-font-size);
   color: var(--second-color);
+  margin: auto;
   text-align: center;
 }
 
